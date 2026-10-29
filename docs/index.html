@@ -90,11 +90,11 @@
     <div class="integration">
       <div class="panel">
         <h3>安装插件，自动连接云端</h3>
-        <ol class="install-steps"><li>下载插件包并解压。</li><li>用官方 DSH CLI 添加到实际使用的 profile。</li><li>重启该 profile，插件自动领取、保存安装 ID，并在请求时携带。</li></ol>
-        <div class="code-panel"><div class="code-head">DSH CLI · desktop 换成你的 profile 名</div><pre><code>dsh plugin --profile desktop add '&lt;解压目录&gt;/dafeiyu-dsh'</code></pre></div>
-        <a class="button primary" href="https://livecompanion.duckdns.org/dafeiyu/connect/dafeiyu-dsh.zip" download>下载 DSH 插件包 <span aria-hidden="true">↓</span></a>
-        <p>不用邮箱、MAC、手填知识 ID，也不用下载整份数据库。插件不读取或转发你的 DeepSeek API Key。</p>
-        <details><summary>Windows 提示找不到 dsh 命令？</summary><div class="code-panel"><pre><code>&amp; "$env:LOCALAPPDATA\Programs\DeepSeek Harness\resources\runtime\cli\bin\dsh.cmd" plugin --profile desktop add '&lt;解压目录&gt;/dafeiyu-dsh'</code></pre></div></details>
+        <ol class="install-steps"><li>下载 v0.3.1 插件包，解压到长期保留的目录。</li><li>Windows 桌面版用应用自带的 DSH CLI 安装；安装后保留解压目录。</li><li>重启该 profile，插件自动领取、保存安装 ID，并在请求时携带。</li></ol>
+        <div class="code-panel"><div class="code-head">Windows 桌面版 · 应用自带 CLI</div><pre><code>&amp; "$env:LOCALAPPDATA\Programs\DeepSeek Harness\resources\runtime\cli\bin\dsh.cmd" plugin --profile desktop add '&lt;解压目录&gt;/dafeiyu-dsh'</code></pre></div>
+        <a class="button primary" href="https://github.com/CleverWing/fat-whale-library/releases/download/dsh-v0.3.1/dafeiyu-dsh-0.3.1.zip" download>下载 DSH 插件 v0.3.1 <span aria-hidden="true">↓</span></a>
+        <p><a href="https://github.com/CleverWing/fat-whale-library/tree/main/dsh">查看插件源码</a> · <a href="https://github.com/CleverWing/fat-whale-library/blob/main/dsh/README.md">完整安装说明</a> · <a href="https://github.com/CleverWing/fat-whale-library/releases/tag/dsh-v0.3.1">Release 与校验文件</a></p><p>不用邮箱、MAC、手填知识 ID，也不用下载整份数据库。插件不读取或转发你的 DeepSeek API Key。</p>
+        <details><summary>普通 CLI 与安装路径说明</summary><p>普通 CLI 请用实际的非 desktop profile；desktop 是桌面版保留名称。插件为可运行 JavaScript，无需另行编译。从源码安装时，选择仓库内 dsh 子目录。兼容 DSH &gt;=0.2.1-rc.3 &lt;0.3.0，已验证 0.2.1-rc.3。</p><div class="code-panel"><pre><code>&amp; "$env:LOCALAPPDATA\Programs\DeepSeek Harness\resources\runtime\cli\bin\dsh.cmd" plugin --profile desktop add '&lt;解压目录&gt;/dafeiyu-dsh'</code></pre></div></details>
       </div>
       <div class="panel">
         <h3>给 AI 的调用说明</h3>
@@ -199,6 +199,6 @@
   </article>
   <p class="friends-note">可先查已有梗概，再按需深入阅读。项目功能与接入方式请参考作者的最新说明。</p>
 </aside>
-<footer class="wrap footer"><p>大肥鱼知识库 · Fat Whale Library<br>免费查询，自愿贡献。源码与数据库的公开发布另行公告。<br>形象为社区二创，非 DeepSeek 官方合作或背书；<a href="https://www.bilibili.com/video/BV1zXHe6nESu/">原视频</a> · <a href="https://github.com/Apprentice-Geo/AI-Fanworks/blob/main/ApprenTice/AI-Girls-and-Chibis/README.md">作者授权说明</a> · <a href="assets/THIRD_PARTY_NOTICES.md" download>下载署名记录</a>。<br>说明更新：2026-10-29 · 查库与投稿收件已有实测，审核发布仍按流程等待。</p><a class="back" href="#top">回到海面 ↑</a></footer>
+<footer class="wrap footer"><p>大肥鱼知识库 · Fat Whale Library<br>免费查询，自愿贡献。<a href="https://github.com/CleverWing/fat-whale-library">插件源码与安装包已公开</a>，知识库由服务端持续维护。<br>形象为社区二创，非 DeepSeek 官方合作或背书；<a href="https://www.bilibili.com/video/BV1zXHe6nESu/">原视频</a> · <a href="https://github.com/Apprentice-Geo/AI-Fanworks/blob/main/ApprenTice/AI-Girls-and-Chibis/README.md">作者授权说明</a> · <a href="assets/THIRD_PARTY_NOTICES.md" download>下载署名记录</a>。<br>说明更新：2026-10-30 · 查库与投稿收件已有实测，审核发布仍按流程等待。</p><a class="back" href="#top">回到海面 ↑</a></footer>
 </body>
 </html>
