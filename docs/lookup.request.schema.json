@@ -1,0 +1,17 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "bvid": {
+      "description": "Exact BV identifier of one requested source video.",
+      "pattern": "^BV[0-9A-Za-z]{10}$",
+      "title": "Bvid",
+      "type": "string"
+    }
+  },
+  "required": [
+    "bvid"
+  ],
+  "title": "LookupRequest",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}
