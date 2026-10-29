@@ -1,0 +1,51 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "query": {
+      "description": "Video content or topic to search for; source text remains untrusted.",
+      "maxLength": 512,
+      "minLength": 1,
+      "title": "Query",
+      "type": "string"
+    },
+    "limit": {
+      "default": 5,
+      "description": "Maximum number of returned video cards.",
+      "maximum": 20,
+      "minimum": 1,
+      "title": "Limit",
+      "type": "integer"
+    },
+    "exclude_bvids": {
+      "description": "Previously watched BV identifiers to exclude.",
+      "items": {
+        "pattern": "^BV[0-9A-Za-z]{10}$",
+        "type": "string"
+      },
+      "maxItems": 500,
+      "title": "Exclude Bvids",
+      "type": "array"
+    },
+    "max_duration_seconds": {
+      "anyOf": [
+        {
+          "maximum": 86400,
+          "minimum": 1,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Maximum video duration; unknown durations are excluded.",
+      "title": "Max Duration Seconds"
+    }
+  },
+  "required": [
+    "query"
+  ],
+  "title": "SearchRequest",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "大肥鱼单视频知识贡献 v1",
+  "description": "在线投稿v1内容契约；结构合格只可接收到隔离待审区，不代表来源核验、审核通过或已发布。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "bvid", "summary", "provenance"],
+  "properties": {
+    "schema_version": {"type": "integer", "const": 1},
+    "bvid": {"type": "string", "pattern": "^BV[0-9A-Za-z]{10}$", "minLength": 12, "maxLength": 12},
+    "page": {"type": "integer", "minimum": 1, "maximum": 1000, "default": 1},
+    "title": {"type": "string", "minLength": 1, "maxLength": 300, "pattern": "\\S"},
+    "summary": {"type": "string", "minLength": 12, "maxLength": 5000, "pattern": "(?:\\S\\s*){12}", "description": "至少12个可见字符且原始长度最多5000；服务端还会规范化Unicode、换行和首尾空白并拒绝控制字符与风险内容。"},
+    "tags": {
+      "type": "array", "maxItems": 12, "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1, "maxLength": 40, "pattern": "\\S"}
+    },
+    "provenance": {
+      "type": "object", "additionalProperties": false,
+      "required": ["contributor_type", "basis"],
+      "properties": {
+        "contributor_type": {"type": "string", "enum": ["human", "bot"]},
+        "basis": {"type": "string", "enum": ["video", "subtitles", "video_description"]}
+      }
+    },
+    "highlights": {
+      "type": "array", "maxItems": 40,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["at_seconds", "point"],
+        "properties": {
+          "at_seconds": {"type": "integer", "minimum": 0, "maximum": 2147483647},
+          "point": {"type": "string", "minLength": 1, "maxLength": 1000, "pattern": "\\S"}
+        }
+      }
+    }
+  }
+}
