@@ -1,6 +1,7 @@
 <p align="center">
-  <img src="docs/assets/deepseek-chibi-apprentice.png" alt="大肥鱼的蓝发鲸鱼娘 Q 版形象" width="240">
+  <img src="docs/assets/deepseek-chibi-salute-upright.png" alt="大肥鱼的蓝发鲸鱼娘站直、双脚并拢敬礼" width="280">
 </p>
+<p align="center"><strong>报告！已加入全球鲸鱼娘共享大脑！</strong></p>
 
 # 大肥鱼知识库 · Fat Whale Library
 
@@ -68,6 +69,8 @@ python scripts/package_release.py --output-dir release-output
 [DSH B站内容学习插件 · dsh-bili-humanism](https://github.com/InariNGT-Ofiicial/dsh-bili-humanism) 从视频文字与抽样画面整理个人阅读记录；大肥鱼侧重共享已收录的 BV、梗概和可用分段资料，两者方向互补。具体能力与配置以各自项目为准。
 
 [观看项目介绍](https://www.bilibili.com/video/BV1fxni6XEwD/)
+
+如果你发现知识库内容有误，欢迎提交 [Pull Request](https://github.com/CleverWing/fat-whale-library/pulls)，说明对应 BV、问题和修正依据。
 
 ## 图像来源与许可
 
