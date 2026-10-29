@@ -1,0 +1,8 @@
+# Prebuilt bundle: only service URL is configured; private identity is acquired
+# through ctx.credentials and never placed in a profile, model prompt or tool args.
+- insert:
+    - id: mcp-dafeiyu
+      name: dsh-dafeiyu-kb
+      config:
+        serviceUrl: !!js process.env.DAFEIYU_SERVICE_URL || 'https://livecompanion.duckdns.org/dafeiyu'
+        toolCallTimeoutMs: 30000

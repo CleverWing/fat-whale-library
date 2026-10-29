@@ -6,22 +6,26 @@
 
 ## 安装到正在使用的 profile
 
-1. [下载配置与插件代码包](https://livecompanion.duckdns.org/dafeiyu/connect/dafeiyu-dsh.zip)，解压。
-2. 使用官方 CLI 安装解压目录，将下方 `desktop` 换成实际使用的 profile：
+1. 从 [GitHub Release 下载 dafeiyu-dsh-0.3.1.zip](https://github.com/CleverWing/fat-whale-library/releases/download/dsh-v0.3.1/dafeiyu-dsh-0.3.1.zip)，解压到长期保留的目录，例如 `C:\DSH-plugins\dafeiyu-dsh`。同一 Release 提供 `SHA256SUMS` 校验文件。
+2. **Windows 桌面版优先使用随应用安装的 CLI**，将下方路径换成解压后含 `package.json` 的目录：
+
+```powershell
+& "$env:LOCALAPPDATA\Programs\DeepSeek Harness\resources\runtime\cli\bin\dsh.cmd" plugin --profile desktop add 'C:\DSH-plugins\dafeiyu-dsh'
+```
+
+如果终端中的 `dsh` 已指向该桌面版入口，也可执行：
 
 ```powershell
 dsh plugin --profile desktop add '<解压目录>/dafeiyu-dsh'
 ```
 
-Windows 桌面版没有 `dsh` 命令时，可直接调用随应用安装的入口：
-
-```powershell
-& "$env:LOCALAPPDATA\Programs\DeepSeek Harness\resources\runtime\cli\bin\dsh.cmd" plugin --profile desktop add '<解压目录>/dafeiyu-dsh'
-```
+独立安装的普通 CLI 请将 `desktop` 换成自己实际使用的非保留 profile；普通 CLI 不能管理桌面版保留的 `desktop`。本地安装使用目录链接，**安装后不要删除或移动解压目录**。
 
 3. 重启该 profile 的 DSH。插件首次连接前生成私密安装 key，写入官方凭据服务；服务器按这个 key 领取稳定随机 ID，之后自动在 MCP HTTP 请求头发送 `X-Dafeiyu-ID`。
 
-配置包只有 `package.json`、`index.js`、`identity.mjs`、`status.mjs`、`cordis.patch.yml`、`README.md`，不含 Python、RAG 索引、账号库或任何现成凭据。包使用预构建 JavaScript，无编译或安装脚本。官方 Desktop 支持本地链接包的 peer 从现有运行时解析；0.3.1 补齐 schema peer，避免 0.3.0 缺依赖而未运行。安装时包管理器仍可能解析其他依赖，不能把“无构建脚本”误称为完全离线安装。
+GitHub 安装包包含 `package.json`、`index.js`、`identity.mjs`、`status.mjs`、`cordis.patch.yml`、`README.md` 和 `LICENSE`。插件源代码就是可运行的 JavaScript，无额外编译或安装脚本；源码与安装包使用同一份代码。官方 Desktop 支持本地链接包的 peer 从现有运行时解析；0.3.1 补齐 schema peer，避免 0.3.0 缺依赖而未运行。安装时包管理器仍可能解析其他依赖，不能把“无构建脚本”误称为完全离线安装。
+
+源码位于 [仓库的 dsh 目录](https://github.com/CleverWing/fat-whale-library/tree/main/dsh)。从源码安装时，把上述安装路径指向本地仓库中的 `dsh` 子目录；仓库根目录不是插件包。重新生成 ZIP 的命令见[源码打包说明](https://github.com/CleverWing/fat-whale-library#从源码生成安装包)。支持范围为 DSH `>=0.2.1-rc.3 <0.3.0`，已验证的官方运行时为 `0.2.1-rc.3`。
 
 overlay 仍使用 `mcp-dafeiyu` 条目 ID；从旧手填 ID 版升级时，应替换实际生效的旧条目，保留其他插件和模型配置，避免同时加载两个同名 MCP 服务。不要用整份示例覆盖个人 profile。
 
@@ -43,7 +47,7 @@ overlay 仍使用 `mcp-dafeiyu` 条目 ID；从旧手填 ID 版升级时，应�
 
 查看 `details` 判断状态、数量与来源指纹。`complete:true` 只表示**全部当前源分段按预算/过滤规则返回**，不表示覆盖视频所有秒或内容事实已核实；`filtered` 只说明源文本确有清理变化。`verification:"source_ai_summary_unverified"` 明示源 AI 摘要未经本次原视频事实核验，源内文字、数字与画面描述可能冲突，接口不自动纠正。不要把这些标记或 SHA 当成实际看过视频的证明。
 
-单卡规范紧凑 UTF-8 JSON 投影预算为 256 KiB，不含 HTTP/MCP 封装或重复开销；最多 1000 段，facts/screen 每个列表最多 100 项。超限或富源不可用会回基础概述、空关键词/时间段和固定原因码，不静默截取；`found:true` 但 details 不可用也不等于缺失 BV。未配置富源可保持旧八字段兼容。富源随既有导出变化按请求自动重载，不改 LiCO compact 索引，也不进行新采集、观看、摘要模型或付费调用。DSH 投稿不参加此增强链，highlights 点位不会补造为时间区间；投稿 v1 不扩展。字段与全部限制见[请求说明](../docs/request-format.md#富视频卡返回)。
+单卡规范紧凑 UTF-8 JSON 投影预算为 256 KiB，不含 HTTP/MCP 封装或重复开销；最多 1000 段，facts/screen 每个列表最多 100 项。超限或富源不可用会回基础概述、空关键词/时间段和固定原因码，不静默截取；`found:true` 但 details 不可用也不等于缺失 BV。未配置富源可保持旧八字段兼容。富源随既有导出变化按请求自动重载，不改 LiCO compact 索引，也不进行新采集、观看、摘要模型或付费调用。DSH 投稿不参加此增强链，highlights 点位不会补造为时间区间；投稿 v1 不扩展。字段与全部限制见[请求说明](https://github.com/CleverWing/fat-whale-library/blob/main/docs/request-format.md#富视频卡返回)。
 
 ## 提交本人掌握的视频梗概
 
@@ -54,7 +58,7 @@ overlay 仍使用 `mcp-dafeiyu` 条目 ID；从旧手填 ID 版升级时，应�
 | `mcp__dafeiyu__dafeiyu_submit_video` | 提交单个原视频、单 P 的梗概到独立待审区 |
 | `mcp__dafeiyu__dafeiyu_contribution_status` | 以贡献编号回查本人投稿状态 |
 
-使用[投稿格式](../docs/contribution-format.md)、[Schema](../docs/contribution.schema.json)和[合成格式示例](../docs/contribution.example.json)。必填 `schema_version:1`、原 BV、至少 12 个可见字符且最多 5000 字符的 `summary`、来源 `provenance`；建议用 100–250 字写清内容、过程与结果。page 默认 1，标题、标签和真实时间点可选，未知信息省略，不补造 Bot segments。内容 UTF-8 JSON 上限 32 KiB，MCP envelope 总上限 64 KiB。示例不是实际视频，不可原样实投。
+使用[投稿格式](https://github.com/CleverWing/fat-whale-library/blob/main/docs/contribution-format.md)、[Schema](https://github.com/CleverWing/fat-whale-library/blob/main/docs/contribution.schema.json)和[合成格式示例](https://github.com/CleverWing/fat-whale-library/blob/main/docs/contribution.example.json)。必填 `schema_version:1`、原 BV、至少 12 个可见字符且最多 5000 字符的 `summary`、来源 `provenance`；建议用 100–250 字写清内容、过程与结果。page 默认 1，标题、标签和真实时间点可选，未知信息省略，不补造 Bot segments。内容 UTF-8 JSON 上限 32 KiB，MCP envelope 总上限 64 KiB。示例不是实际视频，不可原样实投。
 
 在当前 Harness 新会话中可说：“请调用大肥鱼投稿工具提交以下 JSON，保留服务端贡献编号；不要把收件说成已入库。”随后附自己的真实内容。工具参数只传内容，插件自动通过 HTTP `X-Dafeiyu-ID` 认证；状态查询只传返回的贡献编号，不放 ID、IP、API Key 或安装 key。查看真实工具回执后，再要求使用投稿状态工具查询同一贡献编号。直接 REST 脚本不等于 Harness 真实提交。
 
@@ -108,7 +112,7 @@ Windows 未配置 `dsh` 命令时，将命令前的 `dsh` 替换为前面完整�
 
 公网只允许 HTTPS；URL 不带用户名、密码、查询参数或片段。仅隔离本机测试可同时显式设置 loopback HTTP 地址与 `allowLoopbackHttp:true`。不同服务路径前缀使用不同的私密记录，不会把一个服务的安装 key 交给另一个服务。
 
-已有 stdio 示例仍供维护者手动 ID 集成，普通用户不需要它。`/v1/videos/search` 和 `/v1/videos/lookup` 是 REST，不是 MCP 地址；本插件自动使用服务根路径下的 `/mcp`。
+本插件通过 HTTP 连接远程服务。`/v1/videos/search` 和 `/v1/videos/lookup` 是 REST，不是 MCP 地址；本插件自动使用服务根路径下的 `/mcp`。
 
 ## 核验范围
 
