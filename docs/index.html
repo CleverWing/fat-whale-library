@@ -39,13 +39,21 @@
 .friend-card{display:grid;grid-template-columns:1fr auto;gap:27px;align-items:center;border:1px solid #cfe0ef;border-radius:20px;padding:26px 28px;background:linear-gradient(120deg,#f2f8ff,#fff)}
 .friend-name{display:flex;align-items:center;gap:12px;margin-bottom:11px}.friend-icon{display:grid;place-items:center;flex:none;width:39px;height:39px;border-radius:12px;background:#dfeeff;color:var(--deep);font:700 20px/1 var(--mono)}.friend-name h3{font-size:17px;line-height:1.5}.friend-name code{font-size:11px;font-weight:400;color:var(--muted)}.friend-copy>p{font-size:13px;line-height:1.95;color:var(--muted);max-width:720px}.friend-fit{display:flex;flex-wrap:wrap;gap:7px 12px;margin-top:14px;font-size:11px;color:#3f6c97}.friend-fit span{padding:3px 9px;background:#edf5fd;border:1px solid #d8e7f4;border-radius:7px}.friend-actions{display:flex;flex-direction:column;align-items:stretch;gap:10px;min-width:141px}.friend-actions .button{justify-content:space-between;gap:12px;white-space:nowrap;font-size:12px;padding:10px 14px}.friend-actions .video-link{text-align:center;font-size:12px;padding:5px}.friends-note{margin-top:11px;color:var(--muted);font-size:11px}
 @media(max-width:600px){.friends{margin-top:39px;padding-top:20px}.friends-heading{display:block}.friends-heading p{margin-top:6px}.friend-card{grid-template-columns:1fr;padding:21px 19px;gap:20px}.friend-name{align-items:flex-start}.friend-name h3{font-size:16px}.friend-name code{overflow-wrap:anywhere}.friend-actions{flex-direction:row;align-items:center;flex-wrap:wrap;gap:12px}.friend-actions .video-link{text-align:left}.friends-note{font-size:11px}}
+.sponsor-brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.sponsor-brand img { flex: none; }
+.sponsor-brand h3 { font-size: 18px; line-height: 1.5; }
+.sponsor-brand p { margin-top: 3px; font-size: 14px; color: var(--muted); }
 </style>
 </head>
 <body id="top">
 <a class="skip" href="#read">跳到正文</a>
 <header class="wrap top">
   <a class="brand" href="#top"><span class="brand-icon" aria-hidden="true"><img src="assets/deepseek-chibi-apprentice.png" alt="" width="36" height="36"></span> 大肥鱼知识库</a>
-  <nav aria-label="四部分导航"><a href="#read">01 读库策略</a><a href="#mcp">02 MCP 接入</a><a href="#contribute">03 贡献入库</a><a href="#examples">04 实测案例</a></nav>
+  <nav aria-label="页面导航"><a href="#read">01 读库策略</a><a href="#mcp">02 MCP 接入</a><a href="#contribute">03 贡献入库</a><a href="#examples">04 实测案例</a><a href="#sponsors">赞助商</a></nav>
 </header>
 <main>
   <div class="hero">
@@ -187,6 +195,19 @@
 }</code></pre><p>本轮工具事件跨度 910 ms；含客户端与网络处理。</p></li><li><code>dafeiyu_usage</code><pre><code>{}</code></pre><p>本轮工具事件跨度 233 ms；含客户端与网络处理。</p></li><li><code>mcp__dafeiyu__dafeiyu_get_video</code><pre><code>{
   &quot;bvid&quot;: &quot;BV1iynH65Eoq&quot;
 }</code></pre><p>本轮工具事件跨度 263 ms；含客户端与网络处理。</p></li></ol><p>本轮 3 个成功模型步骤累计：未缓存输入 16,935 Token、缓存读取 27,776 Token、输出 1,367 Token，合计 46,078 Token。含 Harness 上下文与工具流程，并非只算这段文字；自动标题用量和实际账单金额未知。</p><p>同题共实测 3 轮：第一轮 149.171 秒，未调用知识库也未给 BV；调整通用工具引导后第二轮 42.546 秒，查库成功但来源归因不准确；再收紧来源说明与外搜条件后得到本轮结果。前两轮成功步骤累计分别为 106,815 / 140,209 Token；失败尝试与自动标题的额外用量未知。原失败保留，没有将定义、目标 BV 或理想答案放进被测输入。</p><p>11.745 秒是官方会话从提交到完成的整轮时间；检索 910 ms、额度查询 233 ms、精确读取 263 ms 是本轮工具事件跨度，不是纯服务端耗时。本轮 2 次知识查询、1 次额度查询、0 次外网搜索、0 次重试。单题与不同缓存、网络和重试条件不能证明普遍提速或节省 Token，也不代表平均值或服务承诺。</p></details>
+  </section>
+  <section class="wrap friends" id="sponsors" aria-labelledby="sponsors-title">
+    <div class="friends-heading"><h2 id="sponsors-title">赞助商</h2></div>
+    <article class="friend-card" aria-labelledby="sponsor-tts">
+      <div class="sponsor-brand">
+        <a href="https://tts.livecompanion.duckdns.org/"><img src="https://tts.livecompanion.duckdns.org/whale-mark.png" alt="大肥鱼 TTS 官网" width="64" height="64" loading="lazy"></a>
+        <div>
+          <h3 id="sponsor-tts">大肥鱼 TTS</h3>
+          <p>为 AI 宠物提供即时、高质量的语音合成服务。</p>
+        </div>
+      </div>
+      <div class="friend-actions"><a class="button" href="https://tts.livecompanion.duckdns.org/">访问大肥鱼 TTS 官网 <span aria-hidden="true">↗</span></a></div>
+    </article>
   </section>
 </main>
 <aside class="wrap friends" id="friends" aria-labelledby="friends-title">
