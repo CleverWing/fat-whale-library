@@ -66,6 +66,12 @@ python scripts/package_release.py --output-dir release-output
 
 源代码保留现有 [MIT 许可](LICENSE)。图像适用下面单独列出的许可。
 
+## 赞助商
+
+[![大肥鱼 TTS 标志](https://tts.livecompanion.duckdns.org/whale-mark.png)](https://tts.livecompanion.duckdns.org/)
+
+感谢 [**大肥鱼 TTS**](https://tts.livecompanion.duckdns.org/) 赞助本项目。大肥鱼 TTS 为 AI 宠物提供即时、高质量的语音合成服务。
+
 ## 友情链接
 
 [DSH B站内容学习插件 · dsh-bili-humanism](https://github.com/InariNGT-Ofiicial/dsh-bili-humanism) 从视频文字与抽样画面整理个人阅读记录；大肥鱼侧重共享已收录的 BV、梗概和可用分段资料，两者方向互补。具体能力与配置以各自项目为准。
